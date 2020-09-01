@@ -1,0 +1,12 @@
+json = []
+index = 0
+while index < @all_recipes.length
+  recipe = @all_recipes[index]
+  recipe_hash = {
+    id: recipe.id,
+    title: recipe.title,
+  }
+  json << recipe_hash
+  index = index + 1
+end
+return json
