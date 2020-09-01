@@ -1,9 +1,6 @@
-json = []
-@all_recipes.each do |recipe|
-  recipe_hash = {
+@all_recipes.map do |recipe|
+  {
     id: recipe.id,
     title: recipe.title,
   }
-  json << recipe_hash
 end
-return json
