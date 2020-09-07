@@ -1,0 +1,15 @@
+{
+  id: recipe.id,
+  title: recipe.title,
+  chef: recipe.chef,
+  ingredients: recipe.ingredients,
+  directions: recipe.directions,
+  image_url: recipe.image_url,
+  prep_time: recipe.prep_time,
+  formatted: {
+    created_at: recipe.friendly_created_at,
+    directions: recipe.directions_list,
+    ingredients: recipe.ingredients_list,
+    prep_time: recipe.friendly_prep_time,
+  },
+}
