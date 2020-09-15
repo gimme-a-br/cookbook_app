@@ -13,6 +13,7 @@ class Api::RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(
+      user_id: current_user.id,
       title: params[:title],
       chef: params[:chef],
       ingredients: params[:ingredients],
@@ -20,8 +21,11 @@ class Api::RecipesController < ApplicationController
       image_url: params[:image_url],
       prep_time: params[:prep_time],
     )
-    @recipe.save
-    render "show.json.jb"
+    if @recipe.save
+      render "show.json.jb"
+    else
+      render json: { errors: @recipe.errors.full_messages }
+    end
   end
 
   def show
