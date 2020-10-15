@@ -12,13 +12,19 @@ class Api::RecipesController < ApplicationController
   end
 
   def create
+    if params[:image]
+      response = Cloudinary::Uploader.upload(params[:image])
+      image_url = response["secure_url"]
+    else
+      image_url = params[:image_url]
+    end
     @recipe = Recipe.new(
       user_id: current_user.id,
       title: params[:title],
       chef: params[:chef],
       ingredients: params[:ingredients],
       directions: params[:directions],
-      image_url: params[:image_url],
+      image_url: image_url,
       prep_time: params[:prep_time],
     )
     if @recipe.save
