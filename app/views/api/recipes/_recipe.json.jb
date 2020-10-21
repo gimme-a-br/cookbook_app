@@ -6,6 +6,7 @@
   directions: recipe.directions,
   image_url: recipe.image_url,
   prep_time: recipe.prep_time,
+  is_owner: current_user && recipe.user_id == current_user.id,
   formatted: {
     created_at: recipe.friendly_created_at,
     directions: recipe.directions_list,
